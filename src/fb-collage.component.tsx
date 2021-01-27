@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ImageBackground, Text, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
 import { Props, ImageSource, FuncStyle, StaticStyle } from './fb-collage.type';
 import staticStyles from './fb-collage.style';
+import FastImage from 'react-native-fast-image'
 
 export default class FBCollage extends React.Component<Props> {
   private styles: StaticStyle;
@@ -34,7 +35,16 @@ export default class FBCollage extends React.Component<Props> {
         activeOpacity={0.8}
         key={`image${index}`}
       >
-        <ImageBackground
+        <FastImage
+        style={this.styles.FLEX as ViewStyle}
+          source={{
+              uri: source,
+              headers: { Authorization: 'someAuthToken' },
+              priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.contain}
+      />
+        {/*<ImageBackground
           style={this.styles.FLEX as ViewStyle}
           source={source}
           resizeMode={resizeMode}
@@ -57,7 +67,7 @@ export default class FBCollage extends React.Component<Props> {
               </Text>
             </View>
           )}
-        </ImageBackground>
+              </ImageBackground>*/}
       </TouchableOpacity>
     );
   };
