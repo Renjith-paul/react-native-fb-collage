@@ -39,8 +39,6 @@ export default class FBCollage extends React.Component<Props> {
         style={this.styles.FLEX as ViewStyle}
           source={{
               uri: source,
-              headers: { Authorization: 'someAuthToken' },
-              priority: FastImage.priority.normal,
           }}
           resizeMode={FastImage.resizeMode.contain}
       />
